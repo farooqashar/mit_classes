@@ -1,0 +1,60 @@
+<!DOCType>
+<html>
+
+<head>
+    <title>Results</title>
+
+    <style>
+
+        .title {
+            color: crimson;
+            animation-name: title_alert;
+            animation-duration: 20s;
+        }
+
+        body {
+            background-color: lightcyan;
+            font-family: times;
+        }
+
+        .button {
+            border: none;
+            color: red;
+            padding: 5px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 12px;
+        }
+
+        li {
+            color: darkgoldenrod;
+        }
+
+    </style>
+
+</head>
+
+<body>
+<h1 class="title">{{ question.q_text }}</h1>
+
+<ul>
+    {% for choice in question.choice_set.all %}
+        <li>{{ choice.c_text }} --> {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'classes:detail' question.id %}"><button class="button">Vote Again?</button></a>
+
+<br/>
+<center>
+    <a href = "/"><button class="button">Home</button></a>
+    <br/>
+    <br/>
+    <a href = "/courses/polls"><button class="button">Go Back</button></a>
+</center>
+</body>
+</html>

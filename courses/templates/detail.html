@@ -1,0 +1,59 @@
+<!DOCType>
+<html>
+
+<head>
+    <title>Question</title>
+    <style>
+
+        .title {
+            color: crimson;
+            animation-name: title_alert;
+            animation-duration: 20s;
+        }
+
+        body {
+            background-color: lightcyan;
+            font-family: times;
+        }
+
+        .button {
+            border: none;
+            color: red;
+            padding: 5px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 12px;
+        }
+
+        .radio {
+            font-size: 1.25rem;
+            color:blue;
+        }
+
+        input[type="radio"]:checked + * {
+            color: darkgreen;
+        }
+
+    </style>
+</head>
+
+<body>
+<form action="{% url 'classes:vote' question.id %}" method="post">
+    {% csrf_token %}
+    <fieldset>
+        <legend><h1 class="title">{{ question.q_text }}</h1></legend>
+        {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+        {% for each_choice in question.choice_set.all %}
+            <input class="radio" type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ each_choice.id }}">
+            <label class="radio" for="choice{{ forloop.counter }}">{{ each_choice.c_text }}</label><br>
+        {% endfor %}
+    </fieldset>
+    <br/>
+ <input class="button" type="submit" value="Vote">
+</form>
+</body>
+</html>

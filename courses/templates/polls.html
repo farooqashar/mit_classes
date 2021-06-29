@@ -1,0 +1,35 @@
+<!DOCType>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="../static/courses/style.css">
+    <title>Polls</title>
+</head>
+
+<body>
+<center>
+<h1 class="title">Polls</h1>
+</center>
+
+{% if all_questions %}
+    <h2 class = "subtitle">
+        Click on a question to answer a poll!
+    </h2>
+    <ul>
+        {% for question in all_questions %}
+            <li><a href="polls/{{ question.id }}/">{{ question.q_text }}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <h2 class="subtitle">No Polls Are Available At This Time</h2>
+{% endif %}
+
+<br/>
+<center>
+    <a href = "/"><button class="button">Home</button></a>
+    <br/>
+    <br/>
+    <a href = "/courses"><button class="button">Go Back</button></a>
+</center>
+</body>
+</html>
