@@ -33,7 +33,7 @@ SECRET_KEY = '&dfsf232dj92edmi3eufn3i3odmen3md3pijv9--d8$3_6#0za5tun3y%dx9teq3r#
 # DEBUG = True
 DEBUG = False
 
-ALLOWED_HOSTS = ['.localhost', '127.0.0.1', '[::1]', '172.16.40.114']
+ALLOWED_HOSTS = ['.localhost', '127.0.0.1', '[::1]', '172.16.40.114', "classes.herokuapp.com", "hidden-plateau-35119.herokuapp.com"]
 # ALLOWED_HOSTS = []
 
 CSRF_COOKIE_SECURE = True
